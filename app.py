@@ -26,14 +26,15 @@ def filemode(mode):
 
 def get_file_information(path):
     if sys.platform == 'win32':
-        if os.path.isdir(path):
+    if os.path.isdir(path):
             ftype = 'dir'
             fmode = "drwxrwxrwx"
-        else:
+    else:
             ftype ='file'
             fmode = "-rwxrwxrwx"
-        fsize = 0 
-        ftime = timestamp_to_str(os.path.getatime(path))
+    fsize = 0 
+    ftime = timestamp_to_str(os.path.getatime(path))
+    """
     else:
         fstat = os.stat(path)
         if stat.S_ISDIR(fstat.st_mode):
@@ -44,7 +45,7 @@ def get_file_information(path):
         fsize = fstat.st_size
         ftime = timestamp_to_str(fstat.st_mtime)
         fmode = filemode(fstat.st_mode)
-    
+    """
     return ftype, fsize, ftime, fmode
 
 
